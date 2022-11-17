@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.starter.model.User;
+import br.com.starter.repository.UserRepository;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    @Autowired
+    private UserRepository userRepository;
 
     private List<User> users = new ArrayList<User>();
 
@@ -30,8 +35,8 @@ public class UserController {
 
     @PostMapping("/")
     public User user(@RequestBody User user) {
-        users.add(user);
-        return user;
+        return this.userRepository.save(user);
+
     }
 
     @GetMapping("/list")
