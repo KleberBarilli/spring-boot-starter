@@ -22,11 +22,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    private List<User> users = new ArrayList<User>();
-
     @GetMapping("/{id}")
     public User user(@PathVariable("id") Long id) {
-        Optional<User> userFound = users.stream().filter(user -> user.getId() == id).findFirst();
+        Optional<User> userFound = this.userRepository.findById(id);
         if (userFound.isPresent()) {
             return userFound.get();
         }
@@ -41,7 +39,7 @@ public class UserController {
 
     @GetMapping("/list")
     public List<User> list() {
-        return users;
+        return this.userRepository.findAll();
     }
 
 }
