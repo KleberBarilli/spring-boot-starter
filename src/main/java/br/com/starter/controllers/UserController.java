@@ -42,4 +42,10 @@ public class UserController {
         return this.userRepository.findAll();
     }
 
+    @GetMapping("/list/more/{id}")
+    public List<User> more(@PathVariable("id") Long id) {
+
+        return this.userRepository.findAllMoreThan(id);
+    }
+
 }
