@@ -6,15 +6,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import br.com.starter.modules.user.model.User;
+import br.com.starter.modules.user.models.User;
+import java.util.UUID;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, UUID> {
 
     @Query("SELECT u from User u where u.id > :id")
-    public List<User> findAllMoreThan(@Param("id") Long id);
+    public List<User> findAllMoreThan(@Param("id") UUID id);
 
-    public List<User> findByIdGreaterThan(Long id);
+    public List<User> findByIdGreaterThan(UUID id);
 
     public List<User> findByNameIgnoreCase(String name);
+
+    User findByName(String name);
 
 }
