@@ -1,4 +1,4 @@
-package br.com.starter.model;
+package br.com.starter.modules.user.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

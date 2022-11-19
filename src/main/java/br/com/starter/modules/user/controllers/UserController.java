@@ -1,6 +1,5 @@
-package br.com.starter.controllers;
+package br.com.starter.modules.user.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.starter.model.User;
-import br.com.starter.repository.UserRepository;
+import br.com.starter.modules.user.model.User;
+import br.com.starter.modules.user.repository.UserRepository;
 
 @RestController
 @RequestMapping("/users")
